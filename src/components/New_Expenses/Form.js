@@ -9,7 +9,7 @@ const Form = (props) => {
   // }
   //  enteredTitle - the Var used to store the value
   // setEnteredTitle - Method to set the current value of the input into the var
-  const [enteredTitle, setEnteredTitle] = useState("");   //useState sets the default value of the field
+  const [enteredTitle, setEnteredTitle] = useState(""); //useState sets the default value of the field
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
@@ -60,13 +60,16 @@ const Form = (props) => {
       date: new Date(enteredDate),
     };
     //console.log(expenseData);
-    props.onSaveExpenseData(expenseData)
+    props.onSaveExpenseData(expenseData);
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
+    props.onCancelClick(true);
   };
 
-  
+  const cancelHandler = () => {
+    props.onCancelClick(true);
+  };
 
   return (
     <form onSubmit={submitHandler}>
@@ -101,6 +104,7 @@ const Form = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={cancelHandler}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
