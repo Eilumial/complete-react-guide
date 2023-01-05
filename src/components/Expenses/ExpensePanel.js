@@ -2,6 +2,7 @@ import "./ExpensePanel.css";
 import React, { useState } from "react";
 import ExpenseList from "./ExpenseList";
 import ExpenseFilter from "./ExpenseFilter";
+import ExpensesChart from "./ExpensesChart";
 import Card from "../UI/Card";
 
 const ExpensePanel = (props) => {
@@ -41,6 +42,7 @@ const ExpensePanel = (props) => {
         selected={filteredYear}
         onChangeFilter={onChangeFilterHandler}
       />
+      <ExpensesChart expenses={filteredExpenses}/>
       <ExpenseList expenses={filteredExpenses} />
       {/* {filteredExpenses.map((expense) => {
         console.log("Exp:" + expense.date.getFullYear().toString());
